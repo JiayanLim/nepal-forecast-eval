@@ -1,0 +1,72 @@
+{
+  "spec_id": "002-nepal-eval",
+  "spec_version": "v1.1",
+  "slug": "20260731",
+  "init_datetime_utc": "2026-07-31T00:00:00Z",
+  "ic_minus6h_utc": "2026-07-30T18:00:00Z",
+  "ic_plus0h_utc": "2026-07-31T00:00:00Z",
+  "era5t": true,
+  "arco_url": "gs://gcp-public-data-arco-era5/ar/full_37-1h-0p25deg-chunk-1.zarr-v3",
+  "retrieval_utc": "2026-08-27T11:57:15Z",
+  "retrieval_wall_s": 14.0,
+  "surface_vars": {
+    "2m_temperature": {
+      "stored_as": "t2m_K",
+      "fetched": true
+    },
+    "10m_u_component_of_wind": {
+      "stored_as": "u10m_ms",
+      "fetched": true
+    },
+    "10m_v_component_of_wind": {
+      "stored_as": "v10m_ms",
+      "fetched": true
+    },
+    "mean_sea_level_pressure": {
+      "stored_as": "msl_Pa",
+      "fetched": true
+    },
+    "total_precipitation": {
+      "stored_as": "tp_raw_m",
+      "fetched": true
+    }
+  },
+  "pressure_level_vars": {
+    "u_component_of_wind": {
+      "fetched": false,
+      "fetch_location": "Brev/aurora_env via earth2studio.data.ARCO"
+    },
+    "v_component_of_wind": {
+      "fetched": false,
+      "fetch_location": "Brev/aurora_env via earth2studio.data.ARCO"
+    },
+    "temperature": {
+      "fetched": false,
+      "fetch_location": "Brev/aurora_env via earth2studio.data.ARCO"
+    },
+    "geopotential": {
+      "fetched": false,
+      "fetch_location": "Brev/aurora_env via earth2studio.data.ARCO"
+    },
+    "specific_humidity": {
+      "fetched": false,
+      "fetch_location": "Brev/aurora_env via earth2studio.data.ARCO"
+    }
+  },
+  "spatial": {
+    "n_lat": 721,
+    "n_lon": 1440,
+    "lat_range": [
+      90.0,
+      -90.0
+    ],
+    "lon_range": [
+      0.0,
+      359.75
+    ]
+  },
+  "ic_steps": 2,
+  "file_path": "results/nepal/era5_ic/20260731_era5_ic.nc",
+  "file_size_mb": 15.12,
+  "validation": "PASS"
+}

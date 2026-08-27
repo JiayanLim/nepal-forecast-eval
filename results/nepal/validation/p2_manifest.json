@@ -1,0 +1,137 @@
+{
+  "spec_id": "002-nepal-eval",
+  "spec_version": "v1.1",
+  "generated_utc": "2026-08-27T11:57:47Z",
+  "arco_url": "gs://gcp-public-data-arco-era5/ar/full_37-1h-0p25deg-chunk-1.zarr-v3",
+  "era5t": true,
+  "n_inits": 14,
+  "n_ic_timestamps": 28,
+  "n_success": 14,
+  "n_skipped": 0,
+  "n_failed": 0,
+  "n_complete": 14,
+  "overall_status": "PASS",
+  "surface_vars_fetched": [
+    "2m_temperature",
+    "10m_u_component_of_wind",
+    "10m_v_component_of_wind",
+    "mean_sea_level_pressure",
+    "total_precipitation"
+  ],
+  "pressure_level_vars_verified_by_name": {
+    "u_component_of_wind": true,
+    "v_component_of_wind": true,
+    "temperature": true,
+    "geopotential": true,
+    "specific_humidity": true
+  },
+  "spatial": {
+    "n_lat": 721,
+    "n_lon": 1440,
+    "lat_convention": "N\u2192S (90.0 to -90.0)",
+    "lon_convention": "0.0 to 359.75"
+  },
+  "total_ic_files": 14,
+  "total_size_mb": 213.5,
+  "wall_total_s": 215.5,
+  "initialisations": [
+    {
+      "slug": "20260720",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260720_era5_ic.nc",
+      "file_mb": 14.9,
+      "wall_s": 12.9
+    },
+    {
+      "slug": "20260721",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260721_era5_ic.nc",
+      "file_mb": 15.24,
+      "wall_s": 15.2
+    },
+    {
+      "slug": "20260722",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260722_era5_ic.nc",
+      "file_mb": 15.28,
+      "wall_s": 15.1
+    },
+    {
+      "slug": "20260723",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260723_era5_ic.nc",
+      "file_mb": 15.29,
+      "wall_s": 14.6
+    },
+    {
+      "slug": "20260724",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260724_era5_ic.nc",
+      "file_mb": 15.09,
+      "wall_s": 15.3
+    },
+    {
+      "slug": "20260725",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260725_era5_ic.nc",
+      "file_mb": 15.42,
+      "wall_s": 15.2
+    },
+    {
+      "slug": "20260726",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260726_era5_ic.nc",
+      "file_mb": 15.46,
+      "wall_s": 14.9
+    },
+    {
+      "slug": "20260727",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260727_era5_ic.nc",
+      "file_mb": 15.48,
+      "wall_s": 14.8
+    },
+    {
+      "slug": "20260728",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260728_era5_ic.nc",
+      "file_mb": 15.44,
+      "wall_s": 14.5
+    },
+    {
+      "slug": "20260729",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260729_era5_ic.nc",
+      "file_mb": 15.13,
+      "wall_s": 15.1
+    },
+    {
+      "slug": "20260730",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260730_era5_ic.nc",
+      "file_mb": 15.44,
+      "wall_s": 14.0
+    },
+    {
+      "slug": "20260731",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260731_era5_ic.nc",
+      "file_mb": 15.12,
+      "wall_s": 14.0
+    },
+    {
+      "slug": "20260801",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260801_era5_ic.nc",
+      "file_mb": 15.19,
+      "wall_s": 15.0
+    },
+    {
+      "slug": "20260802",
+      "status": "success",
+      "file": "/Users/limjiayan/nepal-forecast-eval/results/nepal/era5_ic/20260802_era5_ic.nc",
+      "file_mb": 15.05,
+      "wall_s": 14.9
+    }
+  ]
+}
