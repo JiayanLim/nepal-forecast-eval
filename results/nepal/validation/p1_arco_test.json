@@ -1,0 +1,56 @@
+{
+  "test_utc": "2026-08-27T11:39:31Z",
+  "arco_url": "gs://gcp-public-data-arco-era5/ar/full_37-1h-0p25deg-chunk-1.zarr-v3",
+  "domain": {
+    "lat_min": 26.0,
+    "lat_max": 30.5,
+    "lon_min": 80.0,
+    "lon_max": 88.5
+  },
+  "n_ic_times_required": 28,
+  "n_ic_times_missing": 0,
+  "missing_ic_times": [],
+  "overall_status": "PASS",
+  "results": [
+    {
+      "name": "Calendar loaded: 14 slugs, 28 IC timestamps",
+      "status": "PASS",
+      "detail": "IC range: 2026-07-19T18:00:00+00:00 \u2192 2026-08-02T00:00:00+00:00"
+    },
+    {
+      "name": "ARCO store opened",
+      "status": "PASS",
+      "detail": "Variables: 273"
+    },
+    {
+      "name": "All 28 IC timestamps present in ARCO time axis",
+      "status": "PASS",
+      "detail": "First: 2026-07-19T18:00:00+00:00  Last: 2026-08-02T00:00:00+00:00"
+    },
+    {
+      "name": "t2m slice shape: (19, 35)",
+      "status": "PASS",
+      "detail": "Expected (19, 35)"
+    },
+    {
+      "name": "No NaN in t2m slice (0 NaN)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "t2m range plausible: 271.56\u2013301.14 K",
+      "status": "PASS",
+      "detail": "Expected 260\u2013330 K for Nepal July"
+    },
+    {
+      "name": "total_precipitation field present: shape (19, 35)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "tp converted: max = 24.7469 mm/hr",
+      "status": "PASS",
+      "detail": "After max(0, tp_m \u00d7 1000)"
+    }
+  ]
+}
