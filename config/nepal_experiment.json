@@ -1,6 +1,6 @@
 {
   "spec_id": "002-nepal-eval",
-  "spec_version": "v1.1",
+  "spec_version": "v1.2",
   "generated_utc": "2026-08-27T11:39:00Z",
   "model": {
     "class": "earth2studio.models.px.Aurora1p5",
@@ -63,7 +63,9 @@
     "manifest": "results/nepal/manifest.json",
     "nc_dims": {"lead_step": 168, "lat": 19, "lon": 35}
   },
+  "era5t_role": "initial_condition_only",
+  "era5t_note": "ERA5T provides meteorological IC for Aurora inference. NOT training/fine-tuning/verification data. Zero-shot experiment.",
   "p1_status": "COMPLETE",
-  "p2_status": "GATED",
+  "p2_status": "COMPLETE",
   "p3_status": "GATED"
 }

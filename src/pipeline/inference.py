@@ -1,8 +1,11 @@
 """
-R4 Aurora1p5 Inference Pipeline — Myanmar bbox extraction.
+Aurora1p5 Inference Pipeline — configurable bbox extraction.
 
 Runs a single N_STEPS Aurora1p5 forecast and returns an xr.Dataset
-containing t2m_K, u10m, v10m, tp1h_raw over the Myanmar bbox.
+containing t2m_K, u10m, v10m, tp1h_raw over the specified bbox.
+
+Supports Myanmar (001-zero-shot-eval) and Nepal (002-nepal-eval) domains
+via the `domain` parameter on run_forecast().
 
 PATCH REQUIREMENT (Constitution §IX)
 --------------------------------------
@@ -32,9 +35,10 @@ import numpy as np
 import torch
 import xarray as xr
 
-# ── Domain constants (from docs/domain.md) ───────────────────────────────────
-LAT_MIN, LAT_MAX = 9.0, 29.0
-LON_MIN, LON_MAX = 92.0, 102.0
+# ── Domain presets ────────────────────────────────────────────────────────────
+DOMAIN_MYANMAR = (9.0, 29.0, 92.0, 102.0)   # (lat_min, lat_max, lon_min, lon_max)
+DOMAIN_NEPAL   = (26.0, 30.5, 80.0, 88.5)
+
 N_STEPS = 168
 _COLLECT_VARS = {"t2m", "u10m", "v10m", "tp1h"}
 
@@ -70,10 +74,10 @@ def verify_patch(raise_on_fail: bool = True) -> bool:
 
 # ── Model wrapper ─────────────────────────────────────────────────────────────
 
-class _MyanmarCollector:
+class _BboxCollector:
     """
-    Wraps Aurora1p5 and overrides create_iterator to extract Myanmar bbox
-    data at each step. Collects t2m, u10m, v10m, tp1h per lead time.
+    Wraps Aurora1p5 and overrides create_iterator to extract a regional bbox
+    at each step. Collects t2m, u10m, v10m, tp1h per lead time.
 
     Uses object.__setattr__ to avoid __getattr__ delegation for internal
     attributes. Delegates everything else to the inner model.
@@ -98,7 +102,7 @@ class _MyanmarCollector:
         object.__setattr__(self, "records", [])
 
     def create_iterator(self, x, coords):
-        """Intercept E2S create_iterator; collect Myanmar bbox at each step."""
+        """Intercept E2S create_iterator; collect regional bbox at each step."""
         for x_out, c_out in self._inner.create_iterator(x, coords):
             try:
                 self._collect_step(x_out, c_out)
@@ -149,10 +153,10 @@ class _MyanmarCollector:
                     idx[var_dim] = vi
                 slab = x_np[tuple(idx)]  # shape: (batch?, lat, lon) in rem order
 
-                # Compress lat to Myanmar range (only if global size)
+                # Compress lat to bbox range (only if global size)
                 if lat_di is not None and slab.shape[lat_di] == self._aurora_n_lat:
                     slab = np.compress(self._lat_mask, slab, axis=lat_di)
-                # Compress lon to Myanmar range
+                # Compress lon to bbox range
                 if lon_di is not None and slab.shape[lon_di] == self._aurora_n_lon:
                     slab = np.compress(self._lon_mask, slab, axis=lon_di)
 
@@ -210,9 +214,10 @@ def run_forecast(
     device: str = "cuda",
     nsteps: int = N_STEPS,
     verbose: bool = True,
+    domain: tuple[float, float, float, float] = DOMAIN_MYANMAR,
 ) -> xr.Dataset:
     """
-    Run Aurora1p5 forecast. Returns xr.Dataset over Myanmar bbox.
+    Run Aurora1p5 forecast. Returns xr.Dataset over the specified bbox.
 
     Parameters
     ----------
@@ -221,6 +226,7 @@ def run_forecast(
     device    : "cuda" or "cpu"
     nsteps    : number of 1h steps (default 168 = 7 days)
     verbose   : show E2S progress bar
+    domain    : (lat_min, lat_max, lon_min, lon_max) bounding box
 
     Returns
     -------
@@ -231,8 +237,8 @@ def run_forecast(
         tp1h_raw    : tp1h from E2S, physical m/hr (patch applied)
     Coordinates:
         lead_time   : int, hours since init_time (1 … nsteps)
-        lat         : float, N→S [29.0, 28.75, ..., 9.0]
-        lon         : float, W→E [92.0, 92.25, ..., 102.0]
+        lat         : float, N→S
+        lon         : float, W→E
         init_time   : np.datetime64 (tz-naive)
     Attributes include patch_status and provenance.
     """
@@ -242,6 +248,8 @@ def run_forecast(
 
     verify_patch()
 
+    lat_min, lat_max, lon_min, lon_max = domain
+
     # Determine Aurora grid from output_coords
     in_c  = model.input_coords()
     out_c = model.output_coords(in_c)
@@ -249,8 +257,8 @@ def run_forecast(
     aurora_lon = np.array(out_c["lon"])
 
     lat_is_sn = bool(aurora_lat[0] < aurora_lat[-1])  # True → S→N ordering
-    lat_mask  = (aurora_lat >= LAT_MIN) & (aurora_lat <= LAT_MAX)
-    lon_mask  = (aurora_lon >= LON_MIN) & (aurora_lon <= LON_MAX)
+    lat_mask  = (aurora_lat >= lat_min) & (aurora_lat <= lat_max)
+    lon_mask  = (aurora_lon >= lon_min) & (aurora_lon <= lon_max)
 
     # lat_arr for the output dataset (N→S)
     lat_arr = aurora_lat[lat_mask]
@@ -258,8 +266,8 @@ def run_forecast(
         lat_arr = lat_arr[::-1].copy()
     lon_arr = aurora_lon[lon_mask]
 
-    # Wrap model with Myanmar collector
-    collector = _MyanmarCollector(
+    # Wrap model with bbox collector
+    collector = _BboxCollector(
         inner=model,
         lat_mask=lat_mask,
         lon_mask=lon_mask,
@@ -357,9 +365,9 @@ def run_forecast(
                 "Convert to mm/hr: max(0, tp1h_raw * 1000). "
                 "Do NOT call aurora_log_untransform."
             ),
-            "lat_convention":     "N→S [29.0, 28.75, ..., 9.0]",
-            "lon_convention":     "W→E [92.0, 92.25, ..., 102.0]",
-            "project":            "001-zero-shot-eval",
+            "domain":             f"({lat_min}, {lat_max}, {lon_min}, {lon_max})",
+            "lat_convention":     f"N→S [{lat_max}, ..., {lat_min}]",
+            "lon_convention":     f"W→E [{lon_min}, ..., {lon_max}]",
         },
     )
     return ds
