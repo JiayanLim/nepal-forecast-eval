@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Forecast and IC data — large binary files not tracked in git
+results/nepal/forecasts/
+results/nepal/era5_ic/
+
+# Intermediate caches
+.cache/
+*.zarr/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+*.env
+
+# Earth2Studio and HuggingFace caches
+.cache/earth2studio/
+.cache/huggingface/
