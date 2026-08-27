@@ -1,0 +1,82 @@
+{
+  "document_id": "P3-zero-shot-provenance",
+  "spec_id": "002-nepal-eval",
+  "generated_utc": "2026-08-27T15:00:00Z",
+  "purpose": "Explicit provenance record for zero-shot methodology and ERA5T role",
+
+  "zero_shot_declaration": {
+    "statement": "This is a zero-shot Nepal inference experiment. The pretrained/fine-tuned Aurora 1.5 model is applied directly to Nepal without any adaptation.",
+    "model": {
+      "name": "Aurora 1.5",
+      "class": "earth2studio.models.px.Aurora1p5",
+      "checkpoint": "aurora-0.25-v1.5.ckpt",
+      "checkpoint_hash": "c171214768997594e1a3fc6b8d9bbb489e9d21ab",
+      "pretraining": "ERA5 (endpoint unspecified)",
+      "finetuning": "HRES-T0 2016-2021",
+      "resolution": "0.25 deg global",
+      "paper": "arXiv:2405.13063 (Bodnar et al., 2024)"
+    },
+    "no_adaptation": {
+      "training": false,
+      "fine_tuning": false,
+      "PEFT": false,
+      "LoRA": false,
+      "calibration": false,
+      "parameter_updates": false,
+      "model_selection": false,
+      "domain_adaptation": false,
+      "transfer_learning": false,
+      "prompt_tuning": false
+    }
+  },
+
+  "era5t_role": {
+    "statement": "ERA5T (provisional ERA5) is used ONLY as the atmospheric initial condition (IC) for Aurora 1.5 inference. It provides the meteorological state at T=0 from which Aurora autoregressively forecasts 168 hours.",
+    "era5t_is_NOT_used_for": [
+      "Training",
+      "Fine-tuning",
+      "PEFT / LoRA",
+      "Calibration",
+      "Parameter updates",
+      "Model selection",
+      "Verification / evaluation (inference-only project)",
+      "Loss computation",
+      "Gradient descent"
+    ],
+    "era5t_IS_used_for": [
+      "Atmospheric initial condition at T=0 for each of 14 daily 00Z initialisations"
+    ]
+  },
+
+  "era5t_dual_provenance": {
+    "p2_local_archive": {
+      "description": "P2 phase retrieved ERA5T IC data from ARCO and stored locally as NetCDF files for provenance and validation purposes.",
+      "location": "results/nepal/era5_ic/{slug}_era5_ic.nc",
+      "count": 14,
+      "total_size_mb": 213.5,
+      "variables": "Surface variables only (subset)",
+      "purpose": "Provenance record and offline validation of IC availability. These files are NOT consumed by the inference pipeline.",
+      "source": "ARCO ERA5 Zarr: gs://gcp-public-data-arco-era5/ar/full_37-1h-0p25deg-chunk-1.zarr-v3"
+    },
+    "runtime_arco_access": {
+      "description": "At inference time, Earth2Studio's ARCO data source fetches the FULL global IC (all pressure levels + surface variables) directly from the ARCO Zarr store.",
+      "mechanism": "earth2studio.data.ARCO() called within earth2studio.run.deterministic()",
+      "scope": "Full global 0.25 deg IC: 13 pressure levels x 5 atmos vars + 18 surface vars",
+      "ic_timestamps_per_init": "T-6h and T+0h (two time steps for Aurora's 2-step history)",
+      "source": "ARCO ERA5 Zarr: gs://gcp-public-data-arco-era5/ar/full_37-1h-0p25deg-chunk-1.zarr-v3",
+      "arco_date_patch": "ARCO_TIME_STOP extended from 2025-12-31 to 2026-08-15 on Brev instance (arco.py patched) to access ERA5T dates",
+      "purpose": "This is the actual IC consumed by Aurora at inference time. Not stored locally beyond GPU memory during the run."
+    },
+    "distinction": "P2 local archive = provenance/validation artifact (surface only, stored). Runtime ARCO = actual IC consumed by Aurora (full global, transient). They access the same underlying ARCO dataset but differ in scope and purpose."
+  },
+
+  "inference_environment": {
+    "instance": "lexical-gray-vulture (Brev, NVIDIA A100 80GB)",
+    "conda_env": "aurora_env",
+    "python": "3.11",
+    "earth2studio": "0.17.0",
+    "pytorch": "2.6.x",
+    "precipitation_patch": "Applied (needs_log_untransform=False for tp1h/sf1h)",
+    "arco_patch": "ARCO_TIME_STOP extended to 2026-08-15"
+  }
+}

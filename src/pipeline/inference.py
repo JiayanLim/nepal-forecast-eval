@@ -248,6 +248,15 @@ def run_forecast(
 
     verify_patch()
 
+    # E2S ARCO has a hard-coded ARCO_TIME_STOP (default 2025-12-31) that
+    # rejects ERA5T dates. The zarr store's valid_time_stop attr extends it
+    # after async init, but validation runs before init. Override here for
+    # ERA5T dates confirmed available via P1/P2 gate (through 2026-08-15).
+    arco_cutoff = datetime.datetime(2026, 8, 15)
+    init_naive = init_time.replace(tzinfo=None) if init_time.tzinfo else init_time
+    if init_naive > ARCO.ARCO_TIME_STOP:
+        ARCO.ARCO_TIME_STOP = arco_cutoff
+
     lat_min, lat_max, lon_min, lon_max = domain
 
     # Determine Aurora grid from output_coords

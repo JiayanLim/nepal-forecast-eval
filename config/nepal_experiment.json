@@ -61,11 +61,13 @@
     "ic_nc": "results/nepal/era5_ic/{slug}_era5_ic.nc",
     "provenance_json": "results/nepal/provenance/{slug}_aurora_provenance.json",
     "manifest": "results/nepal/manifest.json",
+    "consolidated_dataset": "results/nepal/dataset/nepal_aurora1p5_20260720_20260802.nc",
+    "dataset_manifest": "results/nepal/dataset/nepal_aurora1p5_dataset_manifest.json",
     "nc_dims": {"lead_step": 168, "lat": 19, "lon": 35}
   },
   "era5t_role": "initial_condition_only",
   "era5t_note": "ERA5T provides meteorological IC for Aurora inference. NOT training/fine-tuning/verification data. Zero-shot experiment.",
   "p1_status": "COMPLETE",
   "p2_status": "COMPLETE",
-  "p3_status": "GATED"
+  "p3_status": "COMPLETE"
 }

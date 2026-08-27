@@ -1,0 +1,1271 @@
+{
+  "report_id": "P3.07-structural-validation",
+  "spec_id": "002-nepal-eval",
+  "generated_utc": "2026-08-27T14:35:17Z",
+  "overall_pass": true,
+  "n_files": 14,
+  "n_pass": 14,
+  "n_fail": 0,
+  "global_checks": [
+    {
+      "check": "file_count",
+      "expected": 14,
+      "actual": 14,
+      "pass": true
+    },
+    {
+      "check": "slug_coverage",
+      "missing": [],
+      "extra": [],
+      "pass": true
+    }
+  ],
+  "file_details": [
+    {
+      "slug": "20260720",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-20T00:00:00.000000000",
+          "calendar": "2026-07-20T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260721",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-21T00:00:00.000000000",
+          "calendar": "2026-07-21T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260722",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-22T00:00:00.000000000",
+          "calendar": "2026-07-22T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260723",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-23T00:00:00.000000000",
+          "calendar": "2026-07-23T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260724",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-24T00:00:00.000000000",
+          "calendar": "2026-07-24T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260725",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-25T00:00:00.000000000",
+          "calendar": "2026-07-25T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260726",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-26T00:00:00.000000000",
+          "calendar": "2026-07-26T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260727",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-27T00:00:00.000000000",
+          "calendar": "2026-07-27T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260728",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-28T00:00:00.000000000",
+          "calendar": "2026-07-28T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260729",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-29T00:00:00.000000000",
+          "calendar": "2026-07-29T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260730",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-30T00:00:00.000000000",
+          "calendar": "2026-07-30T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260731",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-07-31T00:00:00.000000000",
+          "calendar": "2026-07-31T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260801",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-08-01T00:00:00.000000000",
+          "calendar": "2026-08-01T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "slug": "20260802",
+      "checks": {
+        "dimensions": {
+          "lead_time": 168,
+          "lat": 19,
+          "lon": 35,
+          "pass": true
+        },
+        "variables": {
+          "found": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "expected": [
+            "t2m_C",
+            "tp1h_mmhr",
+            "wd_deg",
+            "ws_kts"
+          ],
+          "pass": true
+        },
+        "no_nans": {
+          "counts": {
+            "t2m_C": 0,
+            "ws_kts": 0,
+            "wd_deg": 0,
+            "tp1h_mmhr": 0
+          },
+          "pass": true
+        },
+        "lead_time_range": {
+          "min": 1,
+          "max": 168,
+          "contiguous": true,
+          "pass": true
+        },
+        "coord_consistency": {
+          "pass": true
+        },
+        "lat_north_to_south": {
+          "first": 30.5,
+          "last": 26.0,
+          "pass": true
+        },
+        "lon_west_to_east": {
+          "first": 80.0,
+          "last": 88.5,
+          "pass": true
+        },
+        "init_time_match": {
+          "file": "2026-08-02T00:00:00.000000000",
+          "calendar": "2026-08-02T00:00:00Z",
+          "pass": true
+        },
+        "provenance_attrs": {
+          "attrs": {
+            "model_id": {
+              "expected": "aurora1p5",
+              "actual": "aurora1p5",
+              "pass": true
+            },
+            "earth2studio_ver": {
+              "expected": "0.17.0",
+              "actual": "0.17.0",
+              "pass": true
+            },
+            "patch_confirmed": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            },
+            "era5t_ic": {
+              "expected": "true",
+              "actual": "true",
+              "pass": true
+            }
+          },
+          "pass": true
+        },
+        "spec_id": {
+          "actual": "002-nepal-eval",
+          "pass": true
+        }
+      },
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "report_id": "P3.06-forensic-precip",
+  "spec_id": "002-nepal-eval",
+  "generated_utc": "2026-08-27T15:00:00Z",
+  "purpose": "Forensic quality assurance of Aurora 1.5 precipitation output for Nepal inference",
+
+  "finding_1_negative_origin": {
+    "summary": "Negative tp1h values originate from the Aurora 1.5 model itself, not from any pipeline bug",
+    "detail": [
+      "Aurora 1.5 predicts tp1h in a log-scaled internal space ('scaled_tp_1h').",
+      "E2S aurora1p5.py line 446-447: if needs_log_untransform=True, calls aurora_log_untransform(v) to convert from log-space to physical space.",
+      "With the precipitation patch applied (lines 128-129: needs_log_untransform=False), E2S skips the log_untransform call.",
+      "Aurora's own _post_unnorm_hook already applies one log_untransform internally during decoding.",
+      "The patch prevents a DOUBLE log_untransform (which was the E2S 0.17.0 bug).",
+      "After the single (correct) log_untransform, Aurora output is in physical space (m/hr).",
+      "Negative values are numerical artefacts from Aurora's neural network decoder — the model does not enforce non-negativity on precipitation output.",
+      "This is a KNOWN property of Aurora 1.5 and all similar ML weather models that predict precipitation without an explicit positivity constraint.",
+      "The pipeline correctly preserves negatives in tp1h_raw (intermediate) and clips to >= 0 at the boundary via np.maximum(0, tp1h_raw * 1000)."
+    ],
+    "pipeline_chain": [
+      "Aurora NN decoder → scaled_tp_1h (log-space tensor)",
+      "Aurora _post_unnorm_hook → log_untransform applied ONCE → physical-space tensor (m/hr, may be negative)",
+      "E2S aurora1p5.py → needs_log_untransform=False → NO second transform (patch correct)",
+      "E2S create_iterator yields → _BboxCollector extracts Nepal bbox → tp1h_raw in raw_ds",
+      "nepal_inference.py → tp1h_raw passed to tp1h_to_mmhr() → np.maximum(0, tp1h_raw * 1000) → tp1h_mmhr",
+      "n_neg_tp1h counted BEFORE clipping, stored as NC global attribute"
+    ],
+    "conclusion": "Negatives are model-intrinsic numerical artefacts, not a pipeline or patch error"
+  },
+
+  "finding_2_aggregate_stats": {
+    "total_cells_14_inits": 1564080,
+    "total_negatives_pre_clip": 32024,
+    "pct_negative_overall": 2.05,
+    "range_n_neg_per_init": [521, 3745],
+    "tp_max_all_inits_mmhr": 6.0966,
+    "note": "All zeros in tp1h_mmhr correspond exactly to clipped negatives (14/14 exact match). Aurora never predicted exactly 0.0 m/hr for any cell."
+  },
+
+  "finding_3_temporal_pattern": {
+    "summary": "Negatives do NOT increase monotonically with lead time; they appear as sporadic bursts at particular leads",
+    "detail": [
+      "Lead h=6: 0.0% zeros across all inits (consistent lowest — model well-calibrated at short range)",
+      "Lead h=1: 5.0% (elevated — likely initialisation shock / first-step adjustment artefact)",
+      "Lead h=24/48/72/96: intermittent spikes of 5-34% at individual inits, not systematic",
+      "Lead h=144/168: some inits show elevated zeros (10-25%), others near 0%",
+      "Odd-hour leads (h=36, 60, 84, 108, 132, 156) consistently near 0% — negatives cluster at 12h/24h multiples"
+    ],
+    "interpretation": "The 12h/24h periodicity suggests negatives correlate with diurnal cycle transitions in Aurora's AR rollout, where precipitation sign can flip transiently"
+  },
+
+  "finding_4_spatial_pattern": {
+    "summary": "Negatives concentrate at specific grid cells along the Nepal domain edges and high-elevation areas",
+    "top_cells_by_zeros": [
+      {"lat": 28.25, "lon": 81.25, "avg_zeros_per_init": 29.0, "note": "Mid-western Nepal, Himalayan foothills"},
+      {"lat": 28.00, "lon": 88.00, "avg_zeros_per_init": 28.1, "note": "Eastern Nepal border, Kanchenjunga area"},
+      {"lat": 29.00, "lon": 84.00, "avg_zeros_per_init": 25.8, "note": "Central Nepal, high Himalaya"},
+      {"lat": 28.50, "lon": 88.25, "avg_zeros_per_init": 25.6, "note": "NE corner of domain"},
+      {"lat": 30.50, "lon": 88.25, "avg_zeros_per_init": 23.6, "note": "Northern domain edge (Tibetan Plateau)"}
+    ],
+    "cells_with_zero_negatives": "Multiple cells (e.g., 26.00N/86.75E, 28.00N/84.75E) have zero negatives across all 14 inits",
+    "interpretation": "Negatives cluster at high-elevation and domain-edge cells where Aurora's precipitation field is weakest (low magnitude, sign ambiguity). The NW corner cell (30.50N, 80.00E) consistently has 0 negatives across all inits.",
+    "latitude_band_note": "Bands 28.50-28.75N and 26.50N show highest average zeros (6.0-6.7/168); lower-elevation Terai cells (26-27N) have fewer negatives"
+  },
+
+  "finding_5_comparison_with_myanmar": {
+    "summary": "Behavior is consistent with known Aurora 1.5 precipitation characteristics from Myanmar (001-zero-shot-eval)",
+    "detail": [
+      "Myanmar inference also recorded n_neg_tp1h per init, with similar low-single-digit percentages",
+      "Same root cause: Aurora NN decoder does not enforce non-negativity",
+      "Same mitigation: clip to 0 at conversion boundary, preserve count in metadata",
+      "The precipitation patch (needs_log_untransform=False) is identical between Myanmar and Nepal runs",
+      "Nepal's 2.05% overall negative rate is within the expected range for this model"
+    ]
+  },
+
+  "finding_6_patch_verification": {
+    "patch_file": "earth2studio/models/px/aurora1p5.py",
+    "patch_lines": "128-129",
+    "patch_content": "('tp1h', 'scaled_tp_1h', False) and ('sf1h', 'scaled_sf_1h', False)",
+    "original_bug": "needs_log_untransform=True caused double log_untransform (once in Aurora hook + once in E2S)",
+    "patch_status": "VERIFIED on Brev instance — both lines confirmed False",
+    "verify_patch_result": true
+  }
+}

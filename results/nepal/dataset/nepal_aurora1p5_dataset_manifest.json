@@ -1,0 +1,95 @@
+{
+  "manifest_id": "nepal-aurora1p5-dataset-manifest",
+  "spec_id": "002-nepal-eval",
+  "generated_utc": "2026-08-27T14:35:26Z",
+  "dataset": {
+    "filename": "nepal_aurora1p5_20260720_20260802.nc",
+    "relative_path": "results/nepal/dataset/nepal_aurora1p5_20260720_20260802.nc",
+    "sha256": "fea40f1804d87c10cf1b7f1454c98fc9d1b935f70f0b6fa60ca329d1bc7b59db",
+    "size_bytes": 18273158,
+    "size_mb": 18.27
+  },
+  "dimensions": {
+    "init_time": 14,
+    "lead_time": 168,
+    "lat": 19,
+    "lon": 35
+  },
+  "variables": {
+    "t2m_C": {
+      "units": "degC",
+      "dtype": "float32",
+      "long_name": "2m temperature"
+    },
+    "ws_kts": {
+      "units": "knots",
+      "dtype": "float32",
+      "long_name": "10m wind speed"
+    },
+    "wd_deg": {
+      "units": "degrees",
+      "dtype": "float32",
+      "long_name": "10m wind direction (FROM, meteorological)"
+    },
+    "tp1h_mmhr": {
+      "units": "mm/hr",
+      "dtype": "float32",
+      "long_name": "Precipitation rate (clipped >= 0)"
+    }
+  },
+  "init_dates": [
+    "20260720",
+    "20260721",
+    "20260722",
+    "20260723",
+    "20260724",
+    "20260725",
+    "20260726",
+    "20260727",
+    "20260728",
+    "20260729",
+    "20260730",
+    "20260731",
+    "20260801",
+    "20260802"
+  ],
+  "model": {
+    "id": "aurora1p5",
+    "paper": "arXiv:2405.13063",
+    "checkpoint": "aurora-0.25-v1.5.ckpt",
+    "checkpoint_hash": "c171214768997594e1a3fc6b8d9bbb489e9d21ab"
+  },
+  "earth2studio_ver": "0.17.0",
+  "domain": {
+    "lat_min": 26.0,
+    "lat_max": 30.5,
+    "lon_min": 80.0,
+    "lon_max": 88.5,
+    "resolution_deg": 0.25
+  },
+  "forecast_horizon_hours": 168,
+  "ic_source": {
+    "type": "ERA5T via ARCO",
+    "url": "gs://gcp-public-data-arco-era5/ar/full_37-1h-0p25deg-chunk-1.zarr-v3",
+    "role": "initial_condition_only"
+  },
+  "zero_shot_declaration": "Zero-shot geographic inference. Aurora 1.5 is applied to Nepal without training, fine-tuning, PEFT, calibration, or parameter adaptation. ERA5T provides the initial atmospheric state only.",
+  "source_files": {
+    "20260720_aurora.nc": "ff2b0e41fb4cb710a13de209106bbfcba7580bfee8946dbb1b89f33d8f5bf885",
+    "20260721_aurora.nc": "f0a2a4de382f0e6c98ba0875a2b1427f7d4c9fd0c80d084687083261fdc33737",
+    "20260722_aurora.nc": "efde0cf0febe25178ebf73454889ffb302bd451b22853e1a1da21c9a4da10c1e",
+    "20260723_aurora.nc": "cc7cdad5e899352c089555de9821443fff6a14bf16e14264afac6e61dc5ee3f2",
+    "20260724_aurora.nc": "43b47fb5bb9e7364218c62f12447477975a4759068bdb33d60324a732b48b984",
+    "20260725_aurora.nc": "53dd9309ebcc527a1407ac29238a1ec9430e9fe2bbe616efac5b0a588b80ee8b",
+    "20260726_aurora.nc": "6e7e1959750a48ce6875e52ca4830bd0b81e8549f827f4d3b1643ad56a392816",
+    "20260727_aurora.nc": "dd2a74bc5cdb7b4dd27c050a13e6ab98a7d1846662d39409710500f46382f4de",
+    "20260728_aurora.nc": "832e90baec31b9223d270c9bf0a8640d204bbf482dc0ed278ff9bf2c704ec147",
+    "20260729_aurora.nc": "55cf4f809a0a3bc5fc3d46531fba643db01261fb88638374e68c75ad0f2a14a1",
+    "20260730_aurora.nc": "e03ea4ac145c66d53bbe44aa2a6c90d6fb9afdb9852ef8874fbdbddf78dda8d6",
+    "20260731_aurora.nc": "0e399085022f71a522de33f8c9198dc1eb7ab90344bf87e275c7f57aa7fafe2f",
+    "20260801_aurora.nc": "f5335f7211a176be9bed68596624c6727229599a51e4e12b38ee4b65ff022142",
+    "20260802_aurora.nc": "dfc51a1146fb1ab9821f52ea3419fa8bb2daec6f6f5200cfee32154f8d2413bc"
+  },
+  "n_initialisations": 14,
+  "n_lead_times": 168
+}

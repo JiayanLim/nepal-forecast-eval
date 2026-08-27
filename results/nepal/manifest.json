@@ -1,0 +1,140 @@
+{
+  "spec_id": "002-nepal-eval",
+  "spec_version": "v1.1",
+  "generated_utc": "2026-08-27T14:17:00Z",
+  "model_id": "aurora1p5",
+  "earth2studio_ver": "0.17.0",
+  "checkpoint_hash": "c171214768997594e1a3fc6b8d9bbb489e9d21ab",
+  "domain": {
+    "lat_min": 26.0,
+    "lat_max": 30.5,
+    "lon_min": 80.0,
+    "lon_max": 88.5
+  },
+  "n_inits": 14,
+  "n_steps_per_init": 168,
+  "n_success": 14,
+  "n_skipped": 0,
+  "n_failed": 0,
+  "n_complete": 14,
+  "overall_status": "PASS",
+  "total_forecast_files": 14,
+  "total_size_mb": 18.7,
+  "wall_total_s": 4020.5,
+  "wall_total_min": 67.0,
+  "vram_peak_mb": 25740.0,
+  "initialisations": [
+    {
+      "slug": "20260720",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260720_aurora.nc",
+      "file_mb": 1.33,
+      "wall_s": 283.2,
+      "n_neg_tp1h": 3745
+    },
+    {
+      "slug": "20260721",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260721_aurora.nc",
+      "file_mb": 1.33,
+      "wall_s": 288.4,
+      "n_neg_tp1h": 3477
+    },
+    {
+      "slug": "20260722",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260722_aurora.nc",
+      "file_mb": 1.33,
+      "wall_s": 285.8,
+      "n_neg_tp1h": 2966
+    },
+    {
+      "slug": "20260723",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260723_aurora.nc",
+      "file_mb": 1.33,
+      "wall_s": 294.0,
+      "n_neg_tp1h": 2869
+    },
+    {
+      "slug": "20260724",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260724_aurora.nc",
+      "file_mb": 1.33,
+      "wall_s": 285.2,
+      "n_neg_tp1h": 3130
+    },
+    {
+      "slug": "20260725",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260725_aurora.nc",
+      "file_mb": 1.33,
+      "wall_s": 287.4,
+      "n_neg_tp1h": 3492
+    },
+    {
+      "slug": "20260726",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260726_aurora.nc",
+      "file_mb": 1.33,
+      "wall_s": 285.9,
+      "n_neg_tp1h": 2442
+    },
+    {
+      "slug": "20260727",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260727_aurora.nc",
+      "file_mb": 1.34,
+      "wall_s": 288.2,
+      "n_neg_tp1h": 1883
+    },
+    {
+      "slug": "20260728",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260728_aurora.nc",
+      "file_mb": 1.34,
+      "wall_s": 284.4,
+      "n_neg_tp1h": 2135
+    },
+    {
+      "slug": "20260729",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260729_aurora.nc",
+      "file_mb": 1.34,
+      "wall_s": 291.0,
+      "n_neg_tp1h": 1001
+    },
+    {
+      "slug": "20260730",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260730_aurora.nc",
+      "file_mb": 1.34,
+      "wall_s": 284.7,
+      "n_neg_tp1h": 702
+    },
+    {
+      "slug": "20260731",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260731_aurora.nc",
+      "file_mb": 1.35,
+      "wall_s": 284.6,
+      "n_neg_tp1h": 521
+    },
+    {
+      "slug": "20260801",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260801_aurora.nc",
+      "file_mb": 1.34,
+      "wall_s": 291.0,
+      "n_neg_tp1h": 1728
+    },
+    {
+      "slug": "20260802",
+      "status": "success",
+      "file": "/home/shadeform/workspace/nepal-forecast-eval/results/nepal/forecasts/20260802_aurora.nc",
+      "file_mb": 1.34,
+      "wall_s": 285.4,
+      "n_neg_tp1h": 1933
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "spec_id": "002-nepal-eval",
+  "spec_version": "v1.1",
+  "slug": "20260725",
+  "init_datetime_utc": "2026-07-25T00:00:00Z",
+  "model_id": "aurora1p5",
+  "earth2studio_ver": "0.17.0",
+  "checkpoint_hash": "c171214768997594e1a3fc6b8d9bbb489e9d21ab",
+  "patch_confirmed": true,
+  "era5t_ic": true,
+  "domain": {
+    "lat_min": 26.0,
+    "lat_max": 30.5,
+    "lon_min": 80.0,
+    "lon_max": 88.5
+  },
+  "n_steps": 168,
+  "n_steps_collected": 168,
+  "wall_clock_s": 287.4,
+  "n_neg_tp1h": 3492,
+  "output_dims": {
+    "lead_time": 168,
+    "lat": 19,
+    "lon": 35
+  },
+  "variables": [
+    "t2m_C",
+    "ws_kts",
+    "wd_deg",
+    "tp1h_mmhr"
+  ],
+  "file_path": "results/nepal/forecasts/20260725_aurora.nc",
+  "file_size_mb": 1.33,
+  "generated_utc": "2026-08-27T13:38:44Z"
+}

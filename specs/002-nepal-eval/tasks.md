@@ -2,8 +2,8 @@
 
 **Project**: `002-nepal-eval`
 **Created**: 2026-08-27
-**Version**: v1.2
-**Revised**: 2026-08-27 (v1.2 — P1/P2 complete; P3 restructured; expanded exclusions)
+**Version**: v1.3
+**Revised**: 2026-08-27 (v1.3 — P3 COMPLETE; consolidated dataset; findings documented)
 **Spec**: `specs/002-nepal-eval/spec.md` v1.2
 **Plan**: `specs/002-nepal-eval/plan.md` v1.2
 
@@ -88,84 +88,85 @@ training data, fine-tuning data, or verification data.
 
 ## Phase P3 — Aurora Inference (Brev A100)
 
-*Blocked on: user creates Brev A100 instance and provides instance name.*
-
 ### Stage 1: Brev Environment Validation (P3.01-P3.05)
 
-All must PASS before any inference. STOP after P3.05 for user approval.
-
 ### P3.01 — Connect to Brev instance
-**Action**: Connect via `brev shell <instance-name>`. Verify Nepal project is cloned
-and on `feature/nepal-inference` branch.
-**Status**: [ ] GATED
+**Action**: Connected via SSH to lexical-gray-vulture (shadeform@154.54.100.230).
+Repo cloned, branch feature/nepal-inference checked out.
+**Status**: [x] COMPLETE 2026-08-27
 
 ### P3.02 — Verify aurora_env
-**Action**: Confirm `CONDA_DEFAULT_ENV == aurora_env`.
-**Status**: [ ] GATED
+**Action**: aurora_env conda environment created and activated (Python 3.11).
+**Status**: [x] COMPLETE 2026-08-27
 
 ### P3.03 — Verify Earth2Studio version
-**Action**: Confirm `earth2studio.__version__ == 0.17.0`.
-**Status**: [ ] GATED
+**Action**: earth2studio 0.17.0 confirmed.
+**Status**: [x] COMPLETE 2026-08-27
 
 ### P3.04 — Verify CUDA/PyTorch/A100
-**Action**: Confirm `torch.cuda.is_available()`, `torch.cuda.get_device_name(0)`
-contains "A100", VRAM >= 75 GB.
-**Status**: [ ] GATED
+**Action**: A100-SXM4-80GB confirmed, CUDA available, PyTorch 2.6.x.
+**Status**: [x] COMPLETE 2026-08-27
 
 ### P3.05 — Run environment check and smoke test
 **Script**: `scripts/nepal_brev_check.py`
-**Checks**:
-1. Nepal project directory (spec_id == 002-nepal-eval)
-2. aurora_env active
-3. E2S == 0.17.0
-4. CUDA/A100/VRAM
-5. `verify_patch()` returns True
-6. `Aurora1p5.load_default_package()` loads checkpoint
-7. 2-step smoke test: output shape (2, 19, 35), t2m plausible
-8. Full report to `results/nepal/validation/p3_brev_check.json`
-**GATE**: STOP and report checkpoint. Do NOT proceed to P3.06 until user approves.
-**Status**: [ ] GATED
+**Result**: 12/12 PASS. 2-step smoke test output (2, 19, 35). p3_brev_check.json written.
+User approved checkpoint.
+**Status**: [x] COMPLETE 2026-08-27
 
 ### Stage 2: Full Inference (P3.06)
 
-**P3.06 — Full 14-init Aurora inference**
-*Blocked on: P3.05 checkpoint approved by user.*
+### P3.06 — Full 14-init Aurora inference
 **Script**: `scripts/nepal_inference.py`
-**Action**: Run all 14 inits (168h each) sequentially in tmux.
-E2S fetches IC from ARCO at inference time. Nepal bbox extracted per step.
-Resumable (skips valid files). Atomic writes.
+**Result**: 14/14 SUCCESS. Zero failures, zero retries.
+Total wall time: 4,020.5s (67.0 min). VRAM peak: 25,740 MB. Storage: 18.7 MB.
 **Outputs**:
-- `results/nepal/forecasts/{slug}_aurora.nc` x 14
-- `results/nepal/provenance/{slug}_aurora_provenance.json` x 14
+- `results/nepal/forecasts/{slug}_aurora.nc` × 14
+- `results/nepal/provenance/{slug}_aurora_provenance.json` × 14
 - `results/nepal/manifest.json`
-**Status**: [ ] GATED
+**Forensic**: Precipitation forensic analysis completed. 32,024 negatives (2.05%)
+pre-clip, originating from Aurora NN decoder. Documented in
+`results/nepal/validation/precip_forensic_report.json`.
+**Status**: [x] COMPLETE 2026-08-27
 
 ### Stage 3: Output Validation (P3.07)
 
-**P3.07 — Structural validation of forecast outputs**
-**Action**: Validate all 14 forecast NC files against spec section 9 checks.
-Shape (168, 19, 35), 4 vars, patch_confirmed, range checks.
-**Status**: [ ] GATED
+### P3.07 — Structural validation of forecast outputs
+**Action**: Validated all 14 forecast NC files. Dimensions (168, 19, 35), 4 variables,
+no NaN, lead_time 1–168, init_time matches calendar, provenance attributes consistent.
+**Result**: 14/14 PASS.
+**Output**: `results/nepal/validation/p307_structural_validation.json`
+**Status**: [x] COMPLETE 2026-08-27
+
+### P3.08 — Consolidated research dataset
+**Action**: Compiled 14 forecast files into single dataset with init_time dimension.
+**Output**: `results/nepal/dataset/nepal_aurora1p5_20260720_20260802.nc` (18.27 MB)
+**SHA-256**: `fea40f1804d87c10cf1b7f1454c98fc9d1b935f70f0b6fa60ca329d1bc7b59db`
+**Manifest**: `results/nepal/dataset/nepal_aurora1p5_dataset_manifest.json`
+**Status**: [x] COMPLETE 2026-08-27
+
+### P3.09 — Findings documentation
+**Output**: `docs/nepal_aurora1p5_findings.md`
+**Status**: [x] COMPLETE 2026-08-27
 
 ---
 
 ## Phase P4 — Local Validation and Archiving
 
-*Blocked on P3 gate PASS.*
+*Blocked on P3 gate PASS. P3 gate is now PASS.*
 
 ### P4.01 — Transfer forecast files to local archive
-**Status**: [ ] GATED
+**Status**: [ ] OPEN
 
 ### P4.02 — Local structural validation
-**Status**: [ ] GATED
+**Status**: [ ] OPEN
 
 ### P4.03 — Generate final experiment manifest
-**Status**: [ ] GATED
+**Status**: [ ] OPEN
 
 ### P4.04 — Commit outputs to git
 **Note**: NC files are gitignored. Only scripts, configs, provenance, validation
 JSONs, and manifest are committed.
-**Status**: [ ] GATED
+**Status**: [ ] OPEN
 
 ---
 
@@ -212,4 +213,4 @@ The following are NOT part of this project. Preserved for reference.
 
 ---
 
-*Tasks v1.2 — 2026-08-27.*
+*Tasks v1.3 — 2026-08-27.*

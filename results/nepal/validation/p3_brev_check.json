@@ -1,0 +1,80 @@
+{
+  "spec_id": "002-nepal-eval",
+  "spec_version": "v1.1",
+  "generated_utc": "2026-08-27T13:05:12Z",
+  "environment": {
+    "conda_env": "aurora_env",
+    "e2s_version": "0.17.0",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "gpu_vram_gb": 79.2,
+    "patch_ok": true,
+    "checkpoint_ok": true
+  },
+  "smoke_test": {
+    "ok": true,
+    "wall_s": 15.3
+  },
+  "overall_status": "PASS",
+  "results": [
+    {
+      "name": "Nepal project directory",
+      "status": "PASS",
+      "detail": "spec_id=002-nepal-eval, root=/home/shadeform/workspace/nepal-forecast-eval"
+    },
+    {
+      "name": "aurora_env active",
+      "status": "PASS",
+      "detail": "CONDA_DEFAULT_ENV=aurora_env"
+    },
+    {
+      "name": "earth2studio version",
+      "status": "PASS",
+      "detail": "version=0.17.0"
+    },
+    {
+      "name": "CUDA available",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "GPU: NVIDIA A100-SXM4-80GB",
+      "status": "PASS",
+      "detail": "VRAM: 79.2 GB"
+    },
+    {
+      "name": "PyTorch CUDA version",
+      "status": "PASS",
+      "detail": "torch=2.6.0+cu124, cuda=12.4"
+    },
+    {
+      "name": "verify_patch()",
+      "status": "PASS",
+      "detail": "needs_log_untransform=False for tp1h/sf1h"
+    },
+    {
+      "name": "Aurora1p5.load_default_package()",
+      "status": "PASS",
+      "detail": "loaded in 0.0s"
+    },
+    {
+      "name": "Model loaded to GPU",
+      "status": "PASS",
+      "detail": "16.4s"
+    },
+    {
+      "name": "Smoke test output: lead_time=2, lat=19, lon=35",
+      "status": "PASS",
+      "detail": "Expected (2, 19, 35), vars present=True"
+    },
+    {
+      "name": "t2m range: 272.3\u2013301.4 K",
+      "status": "PASS",
+      "detail": "Expected 240\u2013330 K for Nepal July"
+    },
+    {
+      "name": "Smoke test wall time: 15.3s",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

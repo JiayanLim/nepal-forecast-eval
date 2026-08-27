@@ -86,7 +86,7 @@ def main():
 
         if cuda_avail:
             gpu_name = torch.cuda.get_device_name(0)
-            gpu_mem_gb = torch.cuda.get_device_properties(0).total_mem / (1024**3)
+            gpu_mem_gb = torch.cuda.get_device_properties(0).total_memory / (1024**3)
             check(f"GPU: {gpu_name}",
                   "PASS" if "A100" in gpu_name else "WARN",
                   f"VRAM: {gpu_mem_gb:.1f} GB")
